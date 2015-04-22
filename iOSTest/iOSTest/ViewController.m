@@ -54,17 +54,6 @@
     NSLog(@"%@", charge);
 }
 
-//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-//    
-//    [PierPay handleOpenURL:url withCompletion:^(NSDictionary *result, NSError *error) {
-//        // Do any thing after [PierPay createPayment:charge];
-//        NSLog(@"handle open URL");
-//        NSLog(@"%@", result);
-//    }];
-//    
-//    return YES;
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
