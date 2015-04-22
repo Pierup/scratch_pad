@@ -31,14 +31,14 @@
   //CONSTANCE
 		// API call
 		var URL = {
-			getTransactionSMS: 'https://pierup.ddns.net:8443/user_api/v2/sdk/transaction_sms',
-			getAuthToken: 'https://pierup.ddns.net:8443/user_api/v2/sdk/get_auth_token',
+			getTransactionSMS: 'http://pierup.com/user_api/v2/sdk/transaction_sms',
+			getAuthToken: 'http://pierup.com/user_api/v2/sdk/get_auth_token',
 			getDynamicCode: '',
-			getRegisterValidationCode: 'https://pierup.ddns.net:8443/user_api/v2/user/activation_code',
-			validateCode: 'https://pierup.ddns.net:8443/user_api/v2/user/activation',
-			register:'https://pierup.ddns.net:8443/user_api/v2/user/register_user?platform=3',
-			updateUser: 'https://pierup.ddns.net:8443/user_api/v2/user/update_user?platform=3',
-			applyCredit: 'https://pierup.ddns.net:8443/user_api/v2/sdk/apply_credit?platform=3'
+			getRegisterValidationCode: 'http://pierup.com/user_api/v2/user/activation_code',
+			validateCode: 'http://pierup.com/user_api/v2/user/activation',
+			register:'http://pierup.com/user_api/v2/user/register_user?platform=3',
+			updateUser: 'http://pierup.com/user_api/v2/user/update_user?platform=3',
+			applyCredit: 'http://pierup.com/user_api/v2/sdk/apply_credit?platform=3'
 		};
 
 		var GLOBAL_CONTRY_CODE = 'US';
@@ -433,6 +433,8 @@
 		    	password: passwordValue
 		    };
 		    var pDynamicCode = templateApiCall( checkoutDynamicCodeUrl, message );
+		    console.log('pDynamicCode', pDynamicCode)
+		    console.log('pDynamicCode.responseText', pDynamicCode.responseText)
 		    var msg = JSON.parse( pDynamicCode.responseText );
 		    if( pDynamicCode.status == 200 ){
 		    	console.log( 'get dynamic code on pay by pier', msg );
