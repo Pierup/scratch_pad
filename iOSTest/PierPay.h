@@ -60,6 +60,7 @@ typedef void (^payWithPier)();
  *  - merchant_id     YES          NSString   your id in pier.
  *  - scheme          YES          NSString   merchant App scheme
  *  - server_url      YES          NSString   your server url of accepting auth token,amount,currency, and making the real payment with the pier server SDK.
+ *  - order_id        YES          NSString   merchant orderID
  *  - shop_name       YES          NSString   merchant name
  *
  */

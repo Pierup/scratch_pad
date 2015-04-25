@@ -59,12 +59,6 @@
     [PierPay createPayment:charge];
 }
 
-- (void)payWithPierComplete:(NSDictionary *)charge {
-    NSLog(@"pay with pier complete");
-    // Do anything after payment completion
-    NSLog(@"%@", charge);
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
