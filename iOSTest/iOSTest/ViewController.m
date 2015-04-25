@@ -36,8 +36,13 @@
                             @"13123132",   @"order_id",
                             @"PierShop",   @"shop_name",nil];
     
-    PierPay *pierpay = [[PierPay alloc] initWith:charge delegate:self];
-    [self presentViewController:pierpay animated:YES completion:nil];
+    PierPay *pierpay = [[PierPay alloc] init];
+    [pierpay createPayment:charge pay:^{
+        [self presentViewController:pierpay animated:YES completion:nil];
+    } completion:^(NSDictionary *result, NSError *error) {
+        NSLog(@"%@",result.description);
+    }];
+    
 }
 
 - (IBAction)payWithPier{

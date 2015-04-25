@@ -9,29 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@protocol PierPayDelegate <NSObject>
-
-@required
-
-/**
- *
- *  @abstract Call Back When Pay With Pier In Merchant App.
- *
- *  @param result
- *    key        Type            Description
- *  - status     NSNumber        Showing the status of sdk execution.It means successful if is '0', else is '1'.
- *  - message    NSString        Showing the message from pier.
- *  - code       NSNumber        Showing the code of message from pier.
- *  - result     NSDictionary    Showing the value of output params of pier.
- *  - spending   NSString        spending.
- *  - order_id   NSString        merchant orderID
- *  - shop_name  NSString        merchant name
- *
- */
--(void)payWithPierComplete:(NSDictionary *)result;
-
-@end
-
 /**
  * @abstract Call Back When Pay With Pier In Pier App.
  *
@@ -39,21 +16,18 @@
  *   Key        Type            Description
  * - status     NSNumber        Showing the status of sdk execution.It means successful if is '1', else is '2'.
  * - message    NSString        Showing the message from pier.
- * - code       NSNumber        Showing the code of message from pier.
- * - result     NSDictionary    Showing the value of output params of pier.
- * - spending   NSString        spending.
- * - order_id   NSString   merchant orderID
- * - shop_name  NSString        merchant name
+ * - amount     NSString        amount.
+ * - currency   NSString        NSString
+ * - result     NSDictionary    Showing the value of output params of pier (This parameter is extended).
  *
  * @param error
  *
  */
 typedef void (^payWithPierComplete)(NSDictionary *result, NSError *error);
+typedef void (^payWithPier)();
 
 #pragma mark - navigationController
 @interface PierPay : UINavigationController
-
-@property (nonatomic, weak) id<PierPayDelegate> pierDelegate;
 
 /**
  * @abstract pay by pier with password
@@ -72,10 +46,12 @@ typedef void (^payWithPierComplete)(NSDictionary *result, NSError *error);
  * @param delegate self
  *
  */
-- (instancetype)initWith:(NSDictionary *)charge delegate:(id)delegate;
+- (void)createPayment:(NSDictionary *)charge
+                  pay:(payWithPier)pay
+           completion:(payWithPierComplete)completion;
 
 /**
- *  @abstract pay by pier with password
+ *  @abstract pay by pier in Pier App. It will navigate to Pier App.
  *
  *  @param charge
  *    key             Required     Type       Description
@@ -90,12 +66,12 @@ typedef void (^payWithPierComplete)(NSDictionary *result, NSError *error);
 + (void)createPayment:(NSDictionary *)charge;
 
 /**
- *  Call Back Pier Payent result
+ *  Call Back Pier Payment result
  *
- *  @param url
+ *  @param url              
  *  @param CallBack
  *
  */
-+ (void)handleOpenURL:(NSURL *)url withCompletion:(payWithPierComplete)completion;
++ (void)handleOpenURL:(NSURL *)url completion:(payWithPierComplete)completion;
 
 @end
