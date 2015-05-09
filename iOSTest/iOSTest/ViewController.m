@@ -62,6 +62,7 @@
                             @"http://localhost:8080",   @"server_url",
                             @"13123132",   @"order_id",
                             @"PierShop",   @"shop_name",nil];
+
 //    NSDictionary *charge = [NSDictionary        dictionaryWithObjectsAndKeys:
 //                            @"1234567890",  @"phone",
 //                            @"US",          @"country_code",
@@ -71,6 +72,8 @@
 //                            @"http://fake-merchant.elasticbeanstalk.com/server/sdk/pay/MC0000000086",   @"server_url",
 //                            @"13123132",   @"order_id",
 //                            @"PierShop",   @"shop_name",nil];
+
+    
     PierPay *pierpay = [[PierPay alloc] init];
     [pierpay createPayment:charge pay:^{
         [self presentViewController:pierpay animated:YES completion:nil];
