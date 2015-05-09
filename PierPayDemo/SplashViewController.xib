@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashViewController">
+            <connections>
+                <outlet property="enterButton" destination="aSD-cm-uEb" id="oVp-zs-DeS"/>
+                <outlet property="scrollView" destination="26q-hw-hhf" id="ntZ-6n-Owv"/>
+                <outlet property="view" destination="iN0-l3-epB" id="7Eu-Z3-uRH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="26q-hw-hhf">
+                    <rect key="frame" x="0.0" y="0.0" width="605" height="529"/>
+                </scrollView>
+                <button opaque="NO" contentMode="top" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSD-cm-uEb">
+                    <rect key="frame" x="-8" y="537" width="600" height="69"/>
+                    <state key="normal" title="Enter Pier Furniture">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="enterTapped:" destination="-1" eventType="touchUpInside" id="F1g-UT-Nwk"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aSD-cm-uEb" firstAttribute="leading" secondItem="26q-hw-hhf" secondAttribute="leading" id="3wV-oG-gZ2"/>
+                <constraint firstAttribute="bottom" secondItem="26q-hw-hhf" secondAttribute="bottom" constant="70" id="FHu-mr-LYN">
+                    <variation key="heightClass=regular" constant="50"/>
+                </constraint>
+                <constraint firstAttribute="bottom" secondItem="aSD-cm-uEb" secondAttribute="bottom" id="Tm6-7C-htC"/>
+                <constraint firstItem="aSD-cm-uEb" firstAttribute="trailing" secondItem="26q-hw-hhf" secondAttribute="trailing" id="Yxh-Dd-sQu"/>
+                <constraint firstItem="26q-hw-hhf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="akx-Ke-QCH"/>
+                <constraint firstItem="26q-hw-hhf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="btj-eq-JEA"/>
+                <constraint firstAttribute="trailing" secondItem="26q-hw-hhf" secondAttribute="trailing" id="eW2-CU-3Fp"/>
+                <constraint firstItem="aSD-cm-uEb" firstAttribute="top" secondItem="26q-hw-hhf" secondAttribute="bottom" constant="1" id="tnd-Du-utJ">
+                    <variation key="heightClass=regular" constant="0.0"/>
+                </constraint>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="FHu-mr-LYN"/>
+                    <exclude reference="akx-Ke-QCH"/>
+                    <exclude reference="btj-eq-JEA"/>
+                    <exclude reference="eW2-CU-3Fp"/>
+                    <exclude reference="3wV-oG-gZ2"/>
+                    <exclude reference="Tm6-7C-htC"/>
+                    <exclude reference="Yxh-Dd-sQu"/>
+                    <exclude reference="tnd-Du-utJ"/>
+                </mask>
+            </variation>
+            <variation key="heightClass=regular">
+                <mask key="constraints">
+                    <include reference="FHu-mr-LYN"/>
+                    <include reference="akx-Ke-QCH"/>
+                    <include reference="btj-eq-JEA"/>
+                    <include reference="eW2-CU-3Fp"/>
+                    <include reference="3wV-oG-gZ2"/>
+                    <include reference="Tm6-7C-htC"/>
+                    <include reference="Yxh-Dd-sQu"/>
+                    <include reference="tnd-Du-utJ"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-330" y="80"/>
+        </view>
+    </objects>
+</document>

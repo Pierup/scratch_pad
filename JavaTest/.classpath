@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="lib" path="tomcat-catalina-7.0.27.jar"/>
+	<classpathentry kind="lib" path="tomcat-embed-core-7.0.27.jar"/>
+	<classpathentry kind="lib" path="spring-webmvc-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="commons-beanutils-1.9.2.jar"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="tomcat-util.jar"/>
+	<classpathentry kind="lib" path="jasper-el-6.0.20.jar"/>
+	<classpathentry kind="lib" path="tomcat-coyote-7.0.27.jar"/>
+	<classpathentry exported="true" kind="lib" path="log4j-1.2.17.jar"/>
+	<classpathentry exported="true" kind="lib" path="gson-2.3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-codec-1.10.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-io-2.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-configuration-1.10.jar"/>
+	<classpathentry exported="true" kind="lib" path="httpclient-4.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="httpcore-4.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="httpmime-4.4.1.jar"/>
+	<classpathentry kind="lib" path="commons-lang3-3.4.jar"/>
+	<classpathentry kind="lib" path="commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="spring-web-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-context-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="spring-boot-autoconfigure-1.1.8.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-core-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-beans-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-aop-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-expression-4.1.6.RELEASE.jar"/>
+	<classpathentry kind="lib" path="spring-boot-1.2.3.RELEASE.jar"/>
+	<classpathentry kind="lib" path="juli-6.0.18.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

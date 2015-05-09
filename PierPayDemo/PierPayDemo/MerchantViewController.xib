@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MerchantViewController">
+            <connections>
+                <outlet property="cartCountLabel" destination="4BX-Yl-TkI" id="xZS-4x-Irj"/>
+                <outlet property="collectionView" destination="EF0-pr-GCZ" id="3UR-Mg-rYY"/>
+                <outlet property="shopButton" destination="3Lc-HF-Cge" id="zTA-Qg-m0n"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="EF0-pr-GCZ">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tIn-tR-VXm">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="ATj-pz-SMh"/>
+                        <outlet property="delegate" destination="-1" id="auq-UD-EdR"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="eTZ-mT-s0E">
+                    <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4BX-Yl-TkI">
+                            <rect key="frame" x="177" y="0.0" width="73" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="73" id="5Fc-uz-XQS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-HF-Cge">
+                            <rect key="frame" x="251" y="0.0" width="61" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="61" id="cHn-i7-lIM"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="chopping_cart_icon.png">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="gotoShoppingCart:" destination="-1" eventType="touchUpInside" id="l7w-Ap-cYE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="3Lc-HF-Cge" firstAttribute="leading" secondItem="4BX-Yl-TkI" secondAttribute="trailing" constant="1" id="AP3-ye-L2T"/>
+                        <constraint firstItem="3Lc-HF-Cge" firstAttribute="trailing" secondItem="eTZ-mT-s0E" secondAttribute="trailingMargin" id="Kc3-tB-qjo"/>
+                        <constraint firstAttribute="bottom" secondItem="3Lc-HF-Cge" secondAttribute="bottom" id="Mpb-Qu-zNW"/>
+                        <constraint firstItem="3Lc-HF-Cge" firstAttribute="top" secondItem="4BX-Yl-TkI" secondAttribute="top" id="Piz-DG-acn"/>
+                        <constraint firstItem="3Lc-HF-Cge" firstAttribute="top" secondItem="eTZ-mT-s0E" secondAttribute="top" id="Zqu-NI-DIh"/>
+                        <constraint firstAttribute="height" constant="50" id="aHy-6Q-EJt"/>
+                        <constraint firstItem="4BX-Yl-TkI" firstAttribute="bottom" secondItem="3Lc-HF-Cge" secondAttribute="bottom" id="c1R-5Y-IKp"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="EF0-pr-GCZ" secondAttribute="bottom" constant="44" id="3Fq-K1-k43"/>
+                <constraint firstItem="eTZ-mT-s0E" firstAttribute="trailing" secondItem="EF0-pr-GCZ" secondAttribute="trailing" id="Kbd-7i-sJE"/>
+                <constraint firstItem="EF0-pr-GCZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="KeD-1Q-W6b"/>
+                <constraint firstItem="eTZ-mT-s0E" firstAttribute="leading" secondItem="EF0-pr-GCZ" secondAttribute="leading" id="Pwh-rZ-uiy"/>
+                <constraint firstAttribute="centerX" secondItem="eTZ-mT-s0E" secondAttribute="centerX" id="UJh-CS-L9S"/>
+                <constraint firstAttribute="bottom" secondItem="eTZ-mT-s0E" secondAttribute="bottom" id="gAY-PV-k7L"/>
+                <constraint firstItem="EF0-pr-GCZ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="oH4-sZ-HTJ"/>
+            </constraints>
+            <point key="canvasLocation" x="252" y="213"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chopping_cart_icon.png" width="59" height="49"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

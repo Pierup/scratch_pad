@@ -14,8 +14,8 @@
 		B848C66A1AD478AD00BD672B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B848C6691AD478AD00BD672B /* Images.xcassets */; };
 		B848C66D1AD478AD00BD672B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B848C66B1AD478AD00BD672B /* LaunchScreen.xib */; };
 		B848C6791AD478AD00BD672B /* iOSTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B848C6781AD478AD00BD672B /* iOSTestTests.m */; };
-		B852D53F1AD4D3E200E231BB /* libPierPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B852D53C1AD4D3E200E231BB /* libPierPaySDK.a */; };
-		B852D5401AD4D3E200E231BB /* PierResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B852D53E1AD4D3E200E231BB /* PierResource.bundle */; };
+		B89CE8D71AEEADC200DD33F5 /* libPierPaySDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B89CE8D41AEEADC200DD33F5 /* libPierPaySDK.a */; };
+		B89CE8D81AEEADC200DD33F5 /* PierResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B89CE8D61AEEADC200DD33F5 /* PierResource.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,9 +42,9 @@
 		B848C6721AD478AD00BD672B /* iOSTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iOSTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B848C6771AD478AD00BD672B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B848C6781AD478AD00BD672B /* iOSTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSTestTests.m; sourceTree = "<group>"; };
-		B852D53C1AD4D3E200E231BB /* libPierPaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPierPaySDK.a; sourceTree = "<group>"; };
-		B852D53D1AD4D3E200E231BB /* PierPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PierPay.h; sourceTree = "<group>"; };
-		B852D53E1AD4D3E200E231BB /* PierResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PierResource.bundle; sourceTree = "<group>"; };
+		B89CE8D41AEEADC200DD33F5 /* libPierPaySDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libPierPaySDK.a; sourceTree = "<group>"; };
+		B89CE8D51AEEADC200DD33F5 /* PierPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PierPay.h; sourceTree = "<group>"; };
+		B89CE8D61AEEADC200DD33F5 /* PierResource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PierResource.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B852D53F1AD4D3E200E231BB /* libPierPaySDK.a in Frameworks */,
+				B89CE8D71AEEADC200DD33F5 /* libPierPaySDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,9 +69,9 @@
 		B848C6501AD478AD00BD672B = {
 			isa = PBXGroup;
 			children = (
-				B852D53C1AD4D3E200E231BB /* libPierPaySDK.a */,
-				B852D53D1AD4D3E200E231BB /* PierPay.h */,
-				B852D53E1AD4D3E200E231BB /* PierResource.bundle */,
+				B89CE8D41AEEADC200DD33F5 /* libPierPaySDK.a */,
+				B89CE8D51AEEADC200DD33F5 /* PierPay.h */,
+				B89CE8D61AEEADC200DD33F5 /* PierResource.bundle */,
 				B848C65B1AD478AD00BD672B /* iOSTest */,
 				B848C6751AD478AD00BD672B /* iOSTestTests */,
 				B848C65A1AD478AD00BD672B /* Products */,
@@ -210,9 +210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B848C6681AD478AD00BD672B /* Main.storyboard in Resources */,
-				B852D5401AD4D3E200E231BB /* PierResource.bundle in Resources */,
 				B848C66D1AD478AD00BD672B /* LaunchScreen.xib in Resources */,
 				B848C66A1AD478AD00BD672B /* Images.xcassets in Resources */,
+				B89CE8D81AEEADC200DD33F5 /* PierResource.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,7 +359,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = iOSTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -383,7 +382,6 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				INFOPLIST_FILE = iOSTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

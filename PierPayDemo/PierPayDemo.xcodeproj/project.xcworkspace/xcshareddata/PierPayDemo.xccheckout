@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DAB9878E-0E20-404B-B96E-43DCAC4A2354</string>
+	<key>IDESourceControlProjectName</key>
+	<string>PierPayDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>62BEEEBF40D9DD0D355CAE88108400B95B4F15B4</key>
+		<string>https://github.com/Pierup/scratch_pad.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>PierPayDemo/PierPayDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>62BEEEBF40D9DD0D355CAE88108400B95B4F15B4</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/Pierup/scratch_pad.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>62BEEEBF40D9DD0D355CAE88108400B95B4F15B4</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>62BEEEBF40D9DD0D355CAE88108400B95B4F15B4</string>
+			<key>IDESourceControlWCCName</key>
+			<string>scratch_pad</string>
+		</dict>
+	</array>
+</dict>
+</plist>
