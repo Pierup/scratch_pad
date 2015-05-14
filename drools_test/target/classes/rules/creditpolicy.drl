@@ -1,0 +1,314 @@
+package rules
+
+import com.sample.EquifaxInfo;
+import com.sample.Util;
+
+function boolean between(int value, int lower, int upper){
+	return (value>=lower && value<=upper);
+}
+
+rule "none"
+no-loop true
+    when
+        $info: EquifaxInfo()
+    then
+		$info.setCategory (EquifaxInfo.Category.NONE);	    
+		$info.setRule(drools.getRule().getName());
+		$info.setLimit(0);
+		$info.setShadowLimit(0);
+        System.out.println($info.toString());
+end
+
+rule "Base-line"
+no-loop true
+    when     
+        $info: EquifaxInfo(fico>=620, v3903 in (0,9), v3905 in (0,9), v3807 in (0,99), 
+        v3603 in (0,97,99), v3426 in (0,97,99), eval(v3798 < 300 || v3798 > 9999997))
+    then
+		$info.setCategory (EquifaxInfo.Category.DEFAULT);	    
+		$info.setRule(drools.getRule().getName());
+		$info.setLimit(200);
+		$info.setShadowLimit(200);
+        System.out.println($info.toString());
+end
+
+rule "Base-line-1" extends "none"
+no-loop true
+    when     
+        EquifaxInfo(fico>=620, $v3903: v3903 not in (0,9))
+    then
+		$info.addMessage('Base-line-1', $v3903 + ':Bankruptcy flag');
+        System.out.println($info.toString());
+end
+
+rule "Base-line-2" extends "none"
+no-loop true
+    when     
+        EquifaxInfo(fico>=620, $v3905: v3905 not in (0,9))
+    then
+		$info.addMessage('Base-line-2',  $v3905 + ':Foreclosure flag');
+        System.out.println($info.toString());
+end
+
+rule "Base-line-3" extends "none"
+no-loop true
+    when     
+        EquifaxInfo(fico>=620, $v3807: v3807 not in (0,99))
+    then
+		$info.addMessage('Base-line-3', $v3807+':public record tax liens. Suits and judgments and 3rd party collection items excluding debt buyers');
+        System.out.println($info.toString());
+end
+
+rule "Base-line-4" extends "none"
+no-loop true
+    when     
+        EquifaxInfo(fico>=620, $v3603: v3603 not in (0,97,99))
+    then
+		$info.addMessage('Base-line-4', $v3603+':accounts major derogatory');
+        System.out.println($info.toString());
+end
+
+rule "Base-line-5" extends "none"
+no-loop true
+    when     
+        EquifaxInfo(fico>=620, $v3426: v3426 not in (0,97,99))
+    then
+		$info.addMessage('Base-line-5', $v3426+':# bankcard accounts major derogatory');
+        System.out.println($info.toString());
+end
+
+rule "Base-line-6" extends "none"
+no-loop true
+    when     
+        EquifaxInfo(fico>=620, $v3798:v3798, eval(v3798 >= 300 && v3798 <= 9999997))
+    then
+		$info.addMessage('Base-line-6', $v3798+':Total collection amount unpaid 3rd party collections within 24 months >300');
+        System.out.println($info.toString());
+end
+
+rule "Sub-Prime" extends "Base-line"
+no-loop true
+    when
+        EquifaxInfo(v3228==0, v3204/v3748>=1000, (v3204-v3161)/v3748>=500, v3726==0) 
+    then
+    	$info.setCategory (EquifaxInfo.Category.SUB_PRIME);
+end
+
+rule "Sub-Prime-1" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=620, $v3228:v3228!=0) 
+    then
+		$info.addMessage('Sub-Prime-1', $v3228+':bankcard delinquency with update in last 3 months');
+end
+
+rule "Sub-Prime-2" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=620, v3204/v3748<1000) 
+    then
+		$info.addMessage('Sub-Prime-2', 'average bankcard credit limit < $1000');
+end
+
+rule "Sub-Prime-3" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=620, (v3204-v3161)/v3748<500) 
+    then
+		$info.addMessage('Sub-Prime-3', 'average bankcard open to buy < $500');
+end
+
+rule "Sub-Prime-4" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=620, $v3726:v3726!=0) 
+    then
+		$info.addMessage('Sub-Prime-4', $v3726 +':# open bankcard accounts with update within 3 months with balance >= 75% credit limit/high credit [Code 3726]');
+end
+
+rule "Sub-Prime-low" extends "Sub-Prime"
+no-loop true
+    when
+        EquifaxInfo(between(v3161, 0, 300), $v3161:v3161)        
+    then
+    	$info.setLimit(300);    	
+		$info.setShadowLimit(300);
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Sub-Prime-medium" extends "Sub-Prime"
+no-loop true
+    when
+        EquifaxInfo(between(v3161, 300, 3000), $v3204: v3204, $v3161: v3161, $v3748: v3748)  
+    then
+    	$info.setLimit(Math.min(($v3204-$v3161)/$v3748/2, Math.min($v3161, 1000)));
+		$info.setShadowLimit(300);
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Sub-Prime-high" extends "Sub-Prime"
+no-loop true
+    when
+        EquifaxInfo(v3161>3000)
+    then
+    	$info.setLimit(300);
+		$info.setShadowLimit(300);
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Prime" extends "Base-line"
+no-loop true
+    when
+        EquifaxInfo(fico>=680, v3362==0, v3111>=12, v3161*1.0/v3204 <= 0.75, v3204/v3748>3000, 
+        $v3204: v3204, $v3161: v3161, $v3748: v3748)
+    then
+        $info.setCategory (EquifaxInfo.Category.PRIME);
+        $info.setShadowLimit(($v3204-$v3161)/$v3748);
+end
+
+rule "Prime-1" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=680, $v3362:v3362!=0)
+    then
+    	$info.addMessage('Prime-1', $v3362+':# of 60+ delinquency in last 12 months');
+end
+
+rule "Prime-2" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=680, $v3111:v3111<12)
+    then
+    	$info.addMessage('Prime-2', $v3111+':Accounts must be younger than 12 months;');
+end
+
+rule "Prime-3" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=680, v3161*1.0/v3204 > 0.75)
+    then
+    	$info.addMessage('Prime-3', 'current utilization of bankcard with update in last three months > 75%;');
+end
+
+rule "Prime-4" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=680, v3204/v3748<=3000)
+    then
+    	$info.addMessage('Prime-4', ' average credit limit <= $3,000');
+end
+
+rule "Prime-low" extends "Prime"
+no-loop true
+    when
+        EquifaxInfo(v3161<1000)
+    then
+    	$info.setLimit(1000);		
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Prime-medium" extends "Prime"
+no-loop true
+    when
+        EquifaxInfo(v3161>=1000, v3161<10000)
+    then
+    	$info.setLimit(Math.min(($v3204-$v3161)/$v3748/2, Math.min($v3161, 2500)));
+		
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Prime-high" extends "Prime"
+no-loop true
+    when
+        EquifaxInfo(v3161>=10000)
+    then
+    	$info.setLimit(1000);
+		
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Super-Prime" extends "Base-line"
+no-loop true
+    when
+        EquifaxInfo(fico>=720, v3228==0, v3111>=36, v3161*1.0/v3204 <= 0.5, v3204/v3748>5000, 
+        $v3204: v3204, $v3161: v3161, $v3748: v3748)
+    then
+    	$info.setCategory (EquifaxInfo.Category.SUPER_PRIME);
+    	$info.setShadowLimit(($v3204-$v3161)/$v3748);
+        System.out.println($info.getCategory());
+end
+
+rule "Super-Prime-1" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=720, $v3228:v3228!=0)
+    then
+    	$info.addMessage('Super-Prime-1', $v3228+':# of bankcard delinquency with update in last 3 months');
+end
+
+rule "Super-Prime-2" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=720, $v3111:v3111<36)
+    then
+    	$info.addMessage('Super-Prime-2', $v3111+':Accounts is less than 36 months;');
+end
+
+rule "Super-Prime-3" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=720, v3161*1.0/v3204 > 0.5)
+    then
+    	$info.addMessage('Super-Prime-3', 'current utilization of bankcard with update in last three months > 50%');
+end
+
+rule "Super-Prime-4" extends "none"
+no-loop true
+    when
+        EquifaxInfo(fico>=720, v3204/v3748<=5000)
+    then
+    	$info.addMessage('Super-Prime-4', 'average credit limit <= $5,000 ');
+end
+
+rule "Super-Prime-low" extends "Super-Prime"
+no-loop true
+
+//	salience 180
+//	no-loop true
+//	activation-group "credit_policy"
+
+    when
+        EquifaxInfo(v3161<10000)
+    then
+    	$info.setLimit(1000);		
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Super-Prime-medium" extends "Super-Prime"
+no-loop true
+    when
+        EquifaxInfo(v3161>=1000, v3161<20000)
+    then
+    	$info.setLimit(Math.min(($v3204-$v3161)/$v3748/2, Math.min($v3161, 5000)));		
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+rule "Super-Prime-high" extends "Super-Prime"
+no-loop true
+    when
+        EquifaxInfo(v3161>=20000)
+    then
+    	$info.setLimit(3000);		
+		$info.setRule(drools.getRule().getName());
+        System.out.println($info.toString());
+end
+
+
